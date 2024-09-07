@@ -62,7 +62,8 @@ The platform provides transparency and auditability for all trades, ensuring eve
     - Deposit ETH or ERC-20 tokens to start live trading.
     - View transaction history and bot performance, all logged on-chain.
 
-## Screenshots
+## Screenshots![mytradingbot](https://github.com/user-attachments/assets/0778f15e-1fe4-45a2-b8a0-90e3d6b3b311)
+
 
 _Add screenshots here showing the front-end interface._
 
