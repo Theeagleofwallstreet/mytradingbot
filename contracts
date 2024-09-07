@@ -1,0 +1,68 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract TradingBotManager {
+    struct TradingBot {
+        address owner;
+        uint256 maxSpread;
+        uint256 tradeFrequency;
+        uint256 risk;
+        uint256 startLots;
+        uint256 maxAllowedDD;
+        uint256 lastTradeTime;
+    }
+
+    mapping(address => TradingBot) public bots;
+    address[] public botOwners;
+
+    event BotCreated(address indexed owner, uint256 timestamp);
+    event TradeExecuted(address indexed botOwner, string tradeType, uint256 price, uint256 timestamp);
+    event BotParametersUpdated(address indexed botOwner, uint256 timestamp);
+
+    modifier onlyBotOwner() {
+        require(bots[msg.sender].owner == msg.sender, "Not bot owner");
+        _;
+    }
+
+    function createBot(uint256 _maxSpread, uint256 _tradeFrequency, uint256 _risk, uint256 _startLots, uint256 _maxAllowedDD) external {
+        require(bots[msg.sender].owner == address(0), "Bot already exists");
+
+        bots[msg.sender] = TradingBot({
+            owner: msg.sender,
+            maxSpread: _maxSpread,
+            tradeFrequency: _tradeFrequency,
+            risk: _risk,
+            startLots: _startLots,
+            maxAllowedDD: _maxAllowedDD,
+            lastTradeTime: block.timestamp
+        });
+
+        botOwners.push(msg.sender);
+
+        emit BotCreated(msg.sender, block.timestamp);
+    }
+
+    function updateBotParameters(uint256 _maxSpread, uint256 _tradeFrequency, uint256 _risk, uint256 _startLots, uint256 _maxAllowedDD) external onlyBotOwner {
+        bots[msg.sender].maxSpread = _maxSpread;
+        bots[msg.sender].tradeFrequency = _tradeFrequency;
+        bots[msg.sender].risk = _risk;
+        bots[msg.sender].startLots = _startLots;
+        bots[msg.sender].maxAllowedDD = _maxAllowedDD;
+
+        emit BotParametersUpdated(msg.sender, block.timestamp);
+    }
+
+    function executeTrade(string memory tradeType, uint256 price) external onlyBotOwner {
+        require(block.timestamp >= bots[msg.sender].lastTradeTime + bots[msg.sender].tradeFrequency, "Trade frequency limit");
+
+        // Implement logic to interact with trading APIs or protocols to execute trades on-chain
+
+        bots[msg.sender].lastTradeTime = block.timestamp;
+
+        emit TradeExecuted(msg.sender, tradeType, price, block.timestamp);
+    }
+
+    function getBotOwners() external view returns (address[] memory) {
+        return botOwners;
+    }
+}
