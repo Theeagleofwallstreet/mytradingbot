@@ -41,7 +41,7 @@ The platform provides transparency and auditability for all trades, ensuring eve
 2. **Front-End Application**
     - Clone the repository:
       ```bash
-      git clone https://github.com/yourusername/mytradingbot.git
+      git clone https://github.com/theeagleofwallstreet/mytradingbot.git
       ```
     - Navigate to the `frontend` directory:
       ```bash
