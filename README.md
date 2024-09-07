@@ -1,11 +1,11 @@
 ![screenshot from deployment](https://github.com/user-attachments/assets/949c28f1-f830-451c-9ef7-757622fb7991)
 # Mytradingbot
-mytradingbot is a decentralized trading bot built for crypto markets, allowing users to create customizable bots on Ethereum. It features adjustable risk settings, trade frequency, and supports assets like ETH and ERC-20 tokens, providing transparent and secure trade execution through blockchain technology
+Mytradingbot is a decentralized trading bot built for crypto markets, allowing users to create customizable bots on Ethereum. It features adjustable risk settings, trade frequency, and supports assets like ETH and ERC-20 tokens, providing transparent and secure trade execution through blockchain technology
 # mytradingbot
 
 ## Overview
 
-**mytradingbot** is a decentralized trading bot that allows users to create and deploy their own customizable trading bots directly on the Ethereum blockchain. This project was built as part of a Web3 Hackathon and supports multiple crypto assets, including ETH and ERC-20 tokens.
+**Mytradingbot** is a decentralized trading bot that allows users to create and deploy their own customizable trading bots directly on the Ethereum blockchain. This project was built as part of a Web3 Hackathon and supports multiple crypto assets, including ETH and ERC-20 tokens.
 
 The platform provides transparency and auditability for all trades, ensuring every transaction is recorded on-chain. The bot's parameters can be fine-tuned by users to match their trading strategies, whether conservative or aggressive.
 
